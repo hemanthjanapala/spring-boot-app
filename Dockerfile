@@ -4,26 +4,24 @@
 # EXPOSE 8080
 # ENTRYPOINT ["java", "-jar", "/dem-app/dem-app.jar"]
 
-# Step 1: Use Maven base image to build the application
-FROM maven:3.8.8-openjdk-17 as builder
+
+# FROM maven:4.0-openjdk-21 as builder
+# WORKDIR /app
+#
+# COPY . .
+#
+# RUN mvn clean package -DskipTests
+#
+# FROM openjdk:17-jdk
+# WORKDIR /dem-app
+# COPY --from=builder /app/target/dem-app.jar dem-app.jar
+# EXPOSE 8080
+# ENTRYPOINT ["java", "-jar", "/dem-app/dem-app.jar"]
+# # Use a base OpenJDK image
+
+FROM openjdk:17-jdk-slim
 WORKDIR /app
-
-# Copy the source code into the container
-COPY . .
-
-# Build the application (JAR file)
-RUN mvn clean package -DskipTests
-
-# Step 2: Use a lightweight image to run the application
-FROM openjdk:17-jdk
-WORKDIR /dem-app
-
-# Copy the JAR file from the builder stage
-COPY --from=builder /app/target/dem-app.jar dem-app.jar
-
-# Expose the application port
+COPY target/my-springboot-app.jar app.jar
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "/dem-app/dem-app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
