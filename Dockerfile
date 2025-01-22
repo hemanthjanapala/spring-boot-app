@@ -5,7 +5,7 @@
 # ENTRYPOINT ["java", "-jar", "/dem-app/dem-app.jar"]
 
 # Step 1: Use Maven base image to build the application
-FROM maven:3.8.7-openjdk-17 as builder
+FROM maven:3.8.8-openjdk-17 as builder
 WORKDIR /app
 
 # Copy the source code into the container
