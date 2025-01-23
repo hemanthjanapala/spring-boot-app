@@ -19,7 +19,7 @@
 # ENTRYPOINT ["java", "-jar", "/dem-app/dem-app.jar"]
 # # Use a base OpenJDK image
 
-FROM openjdk:21-jdk-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY target/new.jar app.jar
 EXPOSE 8080
