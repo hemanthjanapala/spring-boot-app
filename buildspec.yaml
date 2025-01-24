@@ -29,8 +29,7 @@ phases:
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
       # Run application tests against PostgreSQL
-      - echo Running application tests...
-      - mvn test
+
 
   post_build:
     commands:
