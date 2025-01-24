@@ -13,7 +13,7 @@ phases:
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
       # Pull PostgreSQL image
       - echo Pulling PostgreSQL image...
-      - docker pull postgres:latest
+      - docker pull 597088037282.dkr.ecr.us-east-2.amazonaws.com/postgres:latest
       # Start PostgreSQL container
       - echo Starting PostgreSQL container...
       - docker run -d --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=0000 -e POSTGRES_DB=postgres -p 5432:5432 postgres:latest
