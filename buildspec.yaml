@@ -16,7 +16,7 @@ phases:
       - docker pull postgres:latest
       # Start PostgreSQL container
       - echo Starting PostgreSQL container...
-      - docker run -d --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=testdb -p 5432:5432 postgres:latest
+      - docker run -d --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=0000 -e POSTGRES_DB=postgres -p 5432:5432 postgres:latest
       # Ensure PostgreSQL is running
       - echo Waiting for PostgreSQL to start...
       - sleep 10
